@@ -6,6 +6,9 @@ class Stopwatch extends Component {
   state = {
     sec: 0,
   }
+componentWillUnmount = () => {
+    clearInterval(this.timeInterval)
+  }
 
   increase = () => {
     this.setState(prevState => ({sec: prevState.sec + 1}))
