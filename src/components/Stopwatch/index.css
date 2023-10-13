@@ -1,117 +1,121 @@
-.bg {
-  background-image: url('https://assets.ccbp.in/frontend/react-js/stopwatch-lg-bg.png');
+.app-container {
+  background-image: url('https://assets.ccbp.in/frontend/react-js/stopwatch-sm-bg.png');
   background-size: cover;
-  min-height: 100vh;
+  height: 100vh;
+}
+
+@media screen and (min-width: 768px) {
+  .app-container {
+    background-image: url('https://assets.ccbp.in/frontend/react-js/stopwatch-lg-bg.png');
+  }
+}
+
+.stopwatch-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding-left: 200px;
-  padding-top: 80px;
+  align-items: center;
+  padding-top: 64px;
 }
 
-.h1 {
+@media screen and (min-width: 992px) {
+  .stopwatch-container {
+    align-items: flex-start;
+    margin-left: 160px;
+  }
+}
+
+.stopwatch {
   color: #333333;
   font-family: 'Roboto';
-  font-size: 48px;
-  font-weight: 700;
+  font-size: 36px;
+  font-weight: 500;
 }
 
-.bg1 {
+@media screen and (min-width: 992px) {
+  .stopwatch {
+    font-size: 64px;
+  }
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #ffffff;
-  border-radius: 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 380px;
-  height: 300px;
-  box-shadow: 0px 4px 16px 0px #bfbfbf;
+  width: 310px;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0px 4px 40px rgba(23, 31, 70, 0.16);
 }
 
-.bg2 {
+.timer {
   display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
-.bg3 {
-  display: flex;
-  justify-content: center;
-}
-.img {
-  height: 40px;
-  width: 40px;
-  margin-top: 22px;
+.timer-image {
+  margin-right: 8px;
 }
 
-.p {
+.timer-text {
   color: #333333;
   font-family: 'Roboto';
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 500;
-  margin-top: 20px;
-  margin-left: 12px;
 }
 
-.h2 {
+.stopwatch-timer {
   color: #333333;
-  font-size: 45px;
+  font-family: 'Roboto';
+  font-size: 36px;
   font-weight: 500;
-  font-family: 'roboto';
-  margin-top: 10px;
+  margin-top: 0px;
 }
 
-.bg4 {
+@media screen and (min-width: 768px) {
+  .stopwatch-timer {
+    font-size: 64px;
+  }
+}
+
+.timer-buttons {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.btn {
+.button {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+@media screen and (min-width: 768px) {
+  .button {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
+.start-button {
   background-color: #1db05f;
-  color: #ffffff;
-  text-align: center;
-  padding-left: 25px;
-  padding-right: 25px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-radius: 8px;
-  font-size: 18px;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-right: 24px;
 }
 
-.btn1 {
+.stop-button {
   background-color: #ef0d36;
-  color: #ffffff;
-  text-align: center;
-  padding-left: 25px;
-  padding-right: 25px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-radius: 8px;
-  font-size: 18px;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-right: 24px;
 }
 
-.btn2 {
+.reset-button {
   background-color: #eaa800;
-  color: #ffffff;
-  text-align: center;
-  padding-left: 25px;
-  padding-right: 25px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-radius: 8px;
-  font-size: 18px;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  margin-left: 10px;
-  margin-right: 10px;
 }
