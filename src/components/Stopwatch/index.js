@@ -4,67 +4,97 @@ import './index.css'
 
 class Stopwatch extends Component {
   state = {
-    sec: 0,
+    isTimerRunning: false,
+    timeElapsedInSeconds: 0,
   }
-componentWillUnmount = () => {
+
+  componentWillUnmount() {
     clearInterval(this.timeInterval)
+    this.setState({isTimerRunning: false})
   }
 
-  increase = () => {
-    this.setState(prevState => ({sec: prevState.sec + 1}))
-  }
-
-  onStart = () => {
-    this.timeInterval = setInterval(this.increase, 1000)
-  }
-
-  onStop = () => {
+  onResetTimer = () => {
     clearInterval(this.timeInterval)
+    this.setState({isTimerRunning: false, timeElapsedInSeconds: 0})
   }
 
-  onReset = () => {
-    this.setState({sec: 0})
+  onStopTimer = () => {
     clearInterval(this.timeInterval)
+    this.setState({isTimerRunning: false})
   }
 
-  getTime = () => {
-    const {sec} = this.state
+  updateTime = () => {
+    this.setState(prevState => ({
+      timeElapsedInSeconds: prevState.timeElapsedInSeconds + 1,
+    }))
+  }
 
-    const m = Math.floor(sec / 60)
+  onStartTimer = () => {
+    this.timeInterval = setInterval(this.updateTime, 1000)
+    this.setState({isTimerRunning: true})
+  }
 
-    const s = Math.floor(sec % 60)
+  renderSeconds = () => {
+    const {timeElapsedInSeconds} = this.state
+    const seconds = Math.floor(timeElapsedInSeconds % 60)
+    console.log(seconds)
 
-    const min1 = m > 9 ? m : `0${m}`
-    const sec1 = s > 9 ? s : `0${s}`
+    if (seconds < 10) {
+      return `0${seconds}`
+    }
+    return seconds
+  }
 
-    return `${min1}:${sec1}`
+  renderMinutes = () => {
+    const {timeElapsedInSeconds} = this.state
+    const minutes = Math.floor(timeElapsedInSeconds / 60)
+    console.log(minutes)
+
+    if (minutes < 10) {
+      return `0${minutes}`
+    }
+    return minutes
   }
 
   render() {
+    const {isTimerRunning} = this.state
+    const time = `${this.renderMinutes()}:${this.renderSeconds()}`
+
     return (
-      <div className="bg">
-        <h1 className="h1">Stopwatch</h1>
-        <div className="bg1">
-          <div className="bg2">
-            <div className="bg3">
+      <div className="app-container">
+        <div className="stopwatch-container">
+          <h1 className="stopwatch">Stopwatch</h1>
+          <div className="timer-container">
+            <div className="timer">
               <img
+                className="timer-image"
                 src="https://assets.ccbp.in/frontend/react-js/stopwatch-timer.png"
                 alt="stopwatch"
-                className="img"
               />
-              <p className="p">Timer</p>
+              <p className="timer-text">Timer</p>
             </div>
-
-            <h1 className="h2">{this.getTime()}</h1>
-
-            <div className="bg4">
-              <button type="button" className="btn" onClick={this.onStart}>
+            <h1 className="stopwatch-timer">{time}</h1>
+            <div className="timer-buttons">
+              <button
+                type="button"
+                className="start-button button"
+                onClick={this.onStartTimer}
+                disabled={isTimerRunning}
+              >
                 Start
               </button>
-              <button type="button" className="btn1" onClick={this.onStop}>
+              <button
+                type="button"
+                className="stop-button button"
+                onClick={this.onStopTimer}
+              >
                 Stop
               </button>
-              <button type="button" className="btn2" onClick={this.onReset}>
+              <button
+                type="button"
+                className="reset-button button"
+                onClick={this.onResetTimer}
+              >
                 Reset
               </button>
             </div>
